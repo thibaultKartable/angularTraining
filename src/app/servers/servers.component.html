@@ -1,0 +1,63 @@
+<label for="">Server Name :</label>
+
+<input
+  type="text"
+  class="form-control"
+  (input)="onUpdateServerName($event)"
+  disabled>
+<!--
+    je crée un événement quand l'user type dans l'input. on lui passe $event qui est
+    une super variable que l'on peut passer pendant de l'event binding, qui contient les
+    datas et méthodes de cet event.
+-->
+
+<p>{{ serverName }}</p>
+
+
+<button
+  class="btn btn-primary"
+  [disabled]="!allowNewServer"
+  (click)="onCreateServer()" >
+  Add Server
+</button>
+<!--
+      les square braquets indiquent à Angular qu'on bind une propriété dynamiquement
+      Ici on fait du property binding, au lieu d'un string interpolation
+-->
+<!--
+      Pour binder un event : on met le nom de l'event entre parenthèse, et ensuite on call la méthode (ou on peut même directement écrire du typescript dedans)
+      que l'on éxécute lorsque l'événement se produit
+-->
+
+
+<input
+  type="text"
+  class="btn btn-primary"
+  [(ngModel)]="serverName">
+<!--
+      On peut binder à la fois un event et une property, en utilisant [()] et la directive
+      ngModel.
+      Ici, la valeur de serverName est mise à jour dans l'objet et dans la vue.
+-->
+
+<p *ngIf="serverCreated">Server was created, server name is {{serverName}}</p>
+<!--
+      ngIf est une directive structurelle : elle va modifier le DOM, c'est pourquoi on met *devant.
+      Son contenu doit être true or false. Quand true, dom element créé, quand false, DOM element supprimé
+-->
+
+
+<app-server></app-server>
+<app-server></app-server>
+
+<!-- String interpolation -->
+<!-- À privilégier si on veut simplement afficher du texte -->
+<p>{{allowNewServer}}</p>
+
+<!-- Property binding -->
+<!-- À privilégier lorsqu'on veut changer l'état d'un élément-->
+<p [innerText]="allowNewServer"></p>
+
+
+<p>{{ serverCreationStatus }}</p>
+
