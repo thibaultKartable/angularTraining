@@ -1,4 +1,4 @@
-<h2>{{ 'Server' }} with ID {{ serverId }} is {{ getServerStatus() }}</h2>
+<h2 [ngStyle] ="{'background-color' : getColor()}" [ngClass]="getClass()">{{ 'Server' }} with ID {{ serverId }} is {{ getServerStatus() }}</h2>
 <!-- Entre les accolades, on peut mettre directement du string aussi. TOut ce qu'on met doit valoir un string
      ou être trductible facilement en string (number amrche aussi). On peut passer une méthode tant qu'elle renvoie un string-->
 

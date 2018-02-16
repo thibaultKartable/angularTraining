@@ -4,7 +4,8 @@
   type="text"
   class="form-control"
   (input)="onUpdateServerName($event)"
-  disabled>
+  >  <!--$event envoie toute les datas de l'event que l'on passe -->
+
 <!--
     je crée un événement quand l'user type dans l'input. on lui passe $event qui est
     une super variable que l'on peut passer pendant de l'event binding, qui contient les
@@ -40,12 +41,14 @@
       Ici, la valeur de serverName est mise à jour dans l'objet et dans la vue.
 -->
 
-<p *ngIf="serverCreated">Server was created, server name is {{serverName}}</p>
+<p *ngIf="serverCreated; else noServer">Server was created, server name is {{serverName}}</p>
+<ng-template #noServer>
+  <p>No server was created</p>
+</ng-template>
 <!--
       ngIf est une directive structurelle : elle va modifier le DOM, c'est pourquoi on met *devant.
       Son contenu doit être true or false. Quand true, dom element créé, quand false, DOM element supprimé
 -->
-
 
 <app-server></app-server>
 <app-server></app-server>
